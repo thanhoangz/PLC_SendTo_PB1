@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Thêm mới đối tượng</h1>
+
+<form novalidate [formGroup]="guestFormGroup" (ngSubmit)="createGuestType()">
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col-md-9">
+        <mat-form-field>
+          <mat-label>Tên đối tượng</mat-label>
+          <input [(ngModel)]="guest.name" matInput placeholder="Nhập tên đối tượng" formControlName="name">
+          <mat-error *ngIf="!guestFormGroup.hasError('required')">
+            Vui lòng nhập tên đối tượng!
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button type="submit" mat-raised-button color="primary" tabindex="-1">
+      <mat-icon>add_circle</mat-icon>
+      Thêm
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close tabindex="-1">
+      <mat-icon>cancel</mat-icon>
+      Hủy
+    </button>
+  </mat-dialog-actions>
+</form>

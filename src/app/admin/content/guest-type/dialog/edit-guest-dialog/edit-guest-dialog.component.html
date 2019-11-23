@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Cập nhật đối tượng</h1>
+
+<form novalidate [formGroup]="guestFormGroup" (ngSubmit)="updateGuestType()">
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col-md-7">
+
+        <mat-form-field>
+          <mat-label>Tên đối tượng</mat-label>
+          <input [(ngModel)]="guest.name" matInput placeholder="Nhập tên đối tượng" formControlName="name">
+          <mat-error *ngIf="!guestFormGroup.hasError('required')">
+            Vui lòng nhập tên đối tượng!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-5">
+        <mat-form-field>
+          <mat-label>Trạng thái</mat-label>
+          <mat-select [(ngModel)]="guest.status" required style="text-align: center;" formControlName="status">
+            <mat-option *ngFor="let item of status" [value]="item.value" style="text-align: center;">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="!guestFormGroup.hasError('required')">
+            Vui lòng chọn trạng thái!
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button type="submit" mat-raised-button color="primary" tabindex="-1">
+      <mat-icon>add_circle</mat-icon>
+      Cập nhật
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close tabindex="-1">
+      <mat-icon>cancel</mat-icon>
+      Hủy
+    </button>
+  </mat-dialog-actions>
+</form>
