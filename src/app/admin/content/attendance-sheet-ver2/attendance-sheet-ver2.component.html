@@ -1,0 +1,123 @@
+<mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
+
+<section class="content" style="margin-top: 1%">
+  <div class="container-fluid">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Điểm danh</mat-card-title>
+        <mat-card-subtitle>Điểm danh hằng ngày</mat-card-subtitle>
+      </mat-card-header>
+
+    </mat-card>
+    <mat-card style="margin-top: 0.5%;">
+      <mat-tab-group color="primary" backgroundColor="primary" animationDuration="0ms" [selectedIndex]="month">
+        <mat-tab [label]="setNameOfMonth(month)" *ngFor="let month of months" (click)="changeMonth(month)">
+
+          <div class="d-flex flex-row bd-highlight mb-12">
+            <div class="p-2 bd-highlight">
+              <mat-form-field>
+                <mat-label>Lớp</mat-label>
+                <mat-select [(ngModel)]="currentClassId" (valueChange)="changeClass($event)">
+                  <mat-option *ngFor="let class of classes" [value]="class.id">
+                    {{class.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="p-2 bd-highlight">
+              <mat-form-field>
+                <mat-label>Năm</mat-label>
+                <mat-select [(ngModel)]="year" (valueChange)="changeYear($event)">
+                  <mat-option *ngFor="let year of years" [value]="year">
+                    {{year}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="p-2 bd-highlight">
+              <mat-chip-list>
+                <mat-chip color="primary" selected (click)="createAttendanceDialog()"
+                  *ngIf="permissionOfFunction.canCreate">Tạo điểm danh</mat-chip>
+                <mat-chip color="accent" selected (click)="rollCallOutClass()" *ngIf="permissionOfFunction.canCreate">
+                  Điểm
+                  danh ngoài</mat-chip>
+              </mat-chip-list>
+            </div>
+          </div>
+
+          <hr>
+
+
+          <div class="row" style="margin: 0px;">
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-male"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Học viên nam</span>
+                  <span class="info-box-number">{{ inforClass.maleNumber }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-female"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Học viên nữ</span>
+                  <span class="info-box-number">{{ inforClass.femaleNumber }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix hidden-md-up"></div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Tổng số thành viên</span>
+                  <span class="info-box-number">{{ inforClass.totalNumber }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+</section>
