@@ -101,6 +101,8 @@ import { ConfirmTranferComponent } from './admin/content/schedule-school/schedul
 import { DeleteScheduleDialogComponent } from './admin/content/schedule-school/schedule-in-table/dialog/delete-schedule-dialog/delete-schedule-dialog.component';
 // tslint:disable-next-line: max-line-length
 import { AddOutAttendanceComponent } from './admin/content/attendance-sheet/dialog/add-attendance-dialog/add-out-attendance/add-out-attendance.component';
+// tslint:disable-next-line: max-line-length
+import { AddListAttendanceByMonthComponent } from './admin/content/attendance-sheet/dialog/add-attendance-dialog/add-list-attendance-by-month/add-list-attendance-by-month.component';
 
 
 
@@ -209,7 +211,8 @@ import { AddOutAttendanceComponent } from './admin/content/attendance-sheet/dial
     CreateClassSecDialogComponent,
     ConfirmTranferComponent,
     DeleteScheduleDialogComponent,
-    AddOutAttendanceComponent
+    AddOutAttendanceComponent,
+    AddListAttendanceByMonthComponent
   ]
 
 })
