@@ -57,7 +57,8 @@ export class AddListAttendanceByMonthComponent implements OnInit {
     console.log(this.lecturerId);
     console.log(this.tutorId);
     console.log(this.classId);
-    this.attendanceSheetService.postAttendanceList(this.user.id, this.lecturerId, this.tutorId, this.classId, this.month, this.year).subscribe(result => {
+    // tslint:disable-next-line: max-line-length
+    this.attendanceSheetService.postAttendanceList(this.user.id, this.lecturerId, this.tutorId, this.classId, this.month + 1, this.year).subscribe(result => {
       setTimeout(() => { this.notificationService.showNotification(1, '', 'Tạo thành công điểm danh!'); });
       this.dialogRef.close(true);
     }, error => {

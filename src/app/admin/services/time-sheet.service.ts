@@ -35,6 +35,11 @@ export class TimeSheetService {
       .get(`${environment.PLCServicesDomain}/api/Timesheets/${id}`);
   }
 
+
+  comfirmTimesheets(timeSheets) {
+    return this.httpClient
+      .post(`${environment.PLCServicesDomain}/api/Timesheets/update-list`, timeSheets);
+  }
 }
 
 

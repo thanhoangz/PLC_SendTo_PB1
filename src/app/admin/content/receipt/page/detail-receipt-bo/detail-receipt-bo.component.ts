@@ -19,7 +19,7 @@ import { FomatDateService } from 'src/app/admin/services/extension/FomatDate.ser
 import { ConstService } from 'src/app/admin/services/extension/Const.service';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { stringify } from 'querystring';
-import { TestReportComponent } from '../../../test-report/test-report.component';
+
 
 @Component({
   selector: 'app-detail-receipt-bo',
@@ -134,7 +134,7 @@ export class DetailReceiptBoComponent implements OnInit {
   }
 
   // tslint:disable-next-line: member-ordering
-  @ViewChild(TestReportComponent, { static: true }) private testReportComponent: TestReportComponent;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
     private receiptTypeService: ReceiptTypeService,

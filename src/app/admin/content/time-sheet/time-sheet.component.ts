@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { NotificationService } from '../../services/extension/notification.service';
 import { ConfirmService } from '../../services/extension/confirm.service';
 import { TimeSheetService } from '../../services/time-sheet.service';
+import { ConfirmTimesheetDialogComponent } from './dialog/confirm-timesheet-dialog/confirm-timesheet-dialog.component';
+
 
 @Component({
   selector: 'app-time-sheet',
@@ -21,6 +23,7 @@ export class TimeSheetComponent implements OnInit {
     canRead: false
   };
 
+  public isLocked = false;
   public showProgressBar = true;
 
   public screenHeight: any;
@@ -49,6 +52,7 @@ export class TimeSheetComponent implements OnInit {
 
   public selection = new SelectionModel(true, []);
 
+  isOpenDialog = false;
   constructor(
     private timeSheetService: TimeSheetService,
     public matDialog: MatDialog,
@@ -103,9 +107,6 @@ export class TimeSheetComponent implements OnInit {
     this.getTimeSheet();
     this.monthSearch = (this.monthSelected + 1).toString();
     this.yearSearch = (this.yearSelected).toString();
-    console.log(this.monthSelected);
-    console.log(this.yearSelected);
-
   }
 
   public nextMonth() {
@@ -199,6 +200,7 @@ export class TimeSheetComponent implements OnInit {
       this.permissionOfFunction.canDelete = true;
       this.permissionOfFunction.canRead = true;
       this.permissionOfFunction.canUpdate = true;
+      this.isLocked = true;
       return;
     }
     const temp = ConstService.permissions.filter(y => y.functionName === 'Chấm công nhân viên')[0];
@@ -210,6 +212,30 @@ export class TimeSheetComponent implements OnInit {
   }
 
 
+
+  public confirmTimeSheet() {
+    console.log(this.timeSheet);
+    if (!this.isOpenDialog) {
+      this.isOpenDialog = true;
+      const widthMachine = (this.screenWidth < 500) ? 0.8 * this.screenWidth : 0.2 * this.screenWidth;
+      this.matDialog.open(ConfirmTimesheetDialogComponent, {
+        width: `${widthMachine}px`,
+        data: {
+          message: 'Chốt chấm công'
+        },
+      }).afterClosed().subscribe(result => {
+        this.isOpenDialog = false;
+        if (result === true) {
+
+          this.timeSheetService.comfirmTimesheets(this.timeSheet).subscribe(data => {
+            this.notificationService.showNotification(1, '', 'Cập nhật thành công!');
+            this.getTimeSheet();
+          }, error => { });
+
+        }
+      });
+    }
+  }
 
 
 }
