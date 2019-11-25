@@ -57,6 +57,9 @@ export class CommonPointComponent implements OnInit {
   public periodicPointDetail = [];
   public periodicPoint;
 
+  public isLocked;
+
+
 
   public classMessageId;
 
@@ -159,12 +162,15 @@ export class CommonPointComponent implements OnInit {
   /// để lấy tên tuần gán ngoài html
   public getPeriodicId() {
     this.periodicPointService.getByPeriodicPointId(this.weekSelected).subscribe((result: any) => {
+      this.isLocked = result.isLocked;
       this.weekName = result.week;
       this.lecturerName = result.lecturerName;
       this.dateOnPoint = result.dateOnPoint;
       console.log(this.weekName);
       console.log(this.lecturerName);
       console.log(this.dateOnPoint);
+      console.log(this.isLocked);
+
     }, error => {
     });
   }

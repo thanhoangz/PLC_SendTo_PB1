@@ -79,14 +79,10 @@
             <ng-container matColumnDef="day_1">
               <th mat-header-cell *matHeaderCellDef> {{ dateOfweek[0] }}<br> 1 </th>
               <td mat-cell *matCellDef="let element">
-                <select matNativeControl required [(ngModel)]="element.day_1" (change)="onChange(element)">
-                  <option value="1">1 </option>
-                  <option value="0.5"> 0.5 </option>
-                  <option value="0">0 </option>
-                </select>
+                <mat-checkbox [(ngModel)]="element.day_1" [checked]="element.day_1 == 1 ? true : false"
+                  (ngModelChange)="element.day_1 = $event ? 1 : 0;" (change)="onChange(element)"></mat-checkbox>
               </td>
             </ng-container>
-
             <!-- Symbol Column -->
             <ng-container matColumnDef="day_2">
               <th mat-header-cell *matHeaderCellDef> {{ dateOfweek[1] }}<br> 2 </th>
@@ -433,8 +429,9 @@
             </ng-container>
             <!-- Weight Column -->
             <ng-container matColumnDef="day_29">
-              <th mat-header-cell *matHeaderCellDef> {{ dateOfweek[28] }}<br> 29 </th>
-              <td mat-cell *matCellDef="let element">
+              <th mat-header-cell *matHeaderCellDef [hidden]="dateOfweek[28] == null ? true : false">
+                {{ dateOfweek[28] }}<br> 29 </th>
+              <td mat-cell *matCellDef="let element" [hidden]="dateOfweek[28] == null ? true : false">
                 <select matNativeControl required [(ngModel)]="element.day_29" (change)="onChange(element)">
                   <option value="1">1</option>
                   <option value="0.5">0.5</option>
@@ -445,8 +442,9 @@
             </ng-container>
             <!-- Weight Column -->
             <ng-container matColumnDef="day_30">
-              <th mat-header-cell *matHeaderCellDef> {{ dateOfweek[29] }}<br> 30 </th>
-              <td mat-cell *matCellDef="let element">
+              <th mat-header-cell *matHeaderCellDef [hidden]="dateOfweek[29] == null ? true : false">
+                {{ dateOfweek[29] }}<br> 30 </th>
+              <td mat-cell *matCellDef="let element" [hidden]="dateOfweek[29] == null ? true : false">
                 <select matNativeControl required [(ngModel)]="element.day_30" (change)="onChange(element)">
                   <option value="1">1</option>
                   <option value="0.5">0.5</option>
@@ -457,8 +455,9 @@
             </ng-container>
             <!-- Weight Column -->
             <ng-container matColumnDef="day_31">
-              <th mat-header-cell *matHeaderCellDef> {{ dateOfweek[30] }}<br> 31 </th>
-              <td mat-cell *matCellDef="let element">
+              <th mat-header-cell *matHeaderCellDef [hidden]="dateOfweek[30] == null ? true : false">
+                {{ dateOfweek[30] }}<br> 31 </th>
+              <td mat-cell *matCellDef="let element" [hidden]="dateOfweek[30] == null ? true : false">
                 <select matNativeControl required [(ngModel)]="element.day_31" (change)="onChange(element)">
                   <option value="1">1</option>
                   <option value="0.5">0.5</option>
