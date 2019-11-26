@@ -261,22 +261,15 @@ export class AttendanceSheetVer2Component implements OnInit {
     return 'Tháng ' + numberMonth;
   }
 
-  onChange(timesheet) {
-    // this.timeSheetService.putTimeSheet(timesheet).subscribe(result => {
+  onChange(detail, e) {
+    console.log(detail);
 
-    //   this.logSystemService.postLogSystem({
-    //     content: `${ConstService.user.userName} đã cập nhật chấm công của tháng ${this.monthSelected} cho ${timesheet.personnelName}`,
-    //     userId: ConstService.user.id,
-    //     isTimeSheetLog: true,
-    //     isSalaryPayLog: false,
-    //     isStudyProcessLog: false,
-    //     isManagerPointLog: false
-    //   }).subscribe(dataResult => {
+    this.attendanceSheetDetailService.putAttendanceDetails(detail).subscribe(result => {
+      this.notificationService.showNotification(1, '', 'Cập nhập thành công!');
+    }, error => {
 
-    //   }, error => { });
-
-    //   this.getTimeSheet();
-    // }, error => {
-    // });
+    });
   }
+
+
 }

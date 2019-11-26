@@ -99,7 +99,8 @@
                 <td>{{ infor.fullName }}</td>
                 <td *ngFor="let day of infor.days">
                   <mat-checkbox [(ngModel)]="day.detail.status" [checked]="day.detail.status == 1 ? true : false"
-                    (ngModelChange)="day.detail.status = $event ? 1 : 0;" (change)="onChange(day.detail)">
+                    (ngModelChange)="day.detail.status = $event ? 1 : 0;"
+                    (change)="onChange(day.detail,$event.checked)">
                   </mat-checkbox>
                 </td>
 
