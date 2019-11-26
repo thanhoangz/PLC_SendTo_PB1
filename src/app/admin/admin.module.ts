@@ -111,7 +111,6 @@ import { DashboardComponent } from './content/dashboard/dashboard.component';
 import { AttendanceSheetComponent } from './content/attendance-sheet/attendance-sheet.component';
 import { CreatReceiptComponent } from './content/receipt/page/creat-receipt/creat-receipt.component';
 import { AddAttendanceDialogComponent } from './content/attendance-sheet/dialog/add-attendance-dialog/add-attendance-dialog.component';
-import { DeleteConfirmComponent } from './confirmation-dialog/delete-confirm/delete-confirm.component';
 import { PrivateInfoComponent } from './content/private-info/private-info.component';
 
 import { RollPayComponent } from './content/roll-pay/roll-pay.component';
@@ -260,7 +259,6 @@ import { ConfirmTimesheetDialogComponent } from './content/time-sheet/dialog/con
     AttendanceSheetComponent,
     CreatReceiptComponent,
     AddAttendanceDialogComponent,
-    DeleteConfirmComponent,
     PrivateInfoComponent,
     RollPayComponent,
     DeleteDialogComponent,

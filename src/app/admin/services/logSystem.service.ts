@@ -13,4 +13,11 @@ export class LogSystemService {
     return this.httpClient
       .post(`${environment.PLCServicesDomain}/api/LogSystems/get-studyprocess-by-learnerId?learnerId=${learnerId}`, null);
   }
+
+
+
+  postLogSystem(logSystem) {
+    return this.httpClient
+      .post(`${environment.PLCServicesDomain}/api/LogSystems`, logSystem);
+  }
 }

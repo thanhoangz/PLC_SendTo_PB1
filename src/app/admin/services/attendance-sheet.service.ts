@@ -33,9 +33,15 @@ export class AttendanceSheetService {
 
 
   getAttendanceByClassAndDate(classId, date) {
-    console.log(classId);
-    console.log(date);
     return this.httpClient
       .get(`${environment.PLCServicesDomain}/api/AttendanceSheets/attendance/${classId}?date=${date}`);
+  }
+
+
+
+  getAttendanceSheetForMonth(month, year, classId) {
+    return this.httpClient
+      // tslint:disable-next-line: max-line-length
+      .post(`${environment.PLCServicesDomain}/api/AttendanceSheetDetails/attendance-of-learner-for-month?month=${month}&year=${year}&_class=${classId}`, null);
   }
 }

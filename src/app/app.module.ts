@@ -86,7 +86,6 @@ import { UpdateScheduleDialogComponent } from './admin/content/schedule-school/s
 import { CreatEndingPointComponent } from './admin/content/ending-point/creat-ending-point/creat-ending-point.component';
 // tslint:disable-next-line: max-line-length
 import { AddAttendanceDialogComponent } from './admin/content/attendance-sheet/dialog/add-attendance-dialog/add-attendance-dialog.component';
-import { DeleteConfirmComponent } from './admin/confirmation-dialog/delete-confirm/delete-confirm.component';
 import { DeleteCourseDialogComponent } from './admin/content/course/dialog/delete-course-dialog/delete-course-dialog.component';
 import { DeleteDialogComponent } from './admin/content/delete-dialog/delete-dialog.component';
 import { PickClassComponent } from './admin/content/schedule-school/schedule-in-table/dialog/pick-class/pick-class.component';
@@ -204,7 +203,6 @@ import { ConfirmTimesheetDialogComponent } from './admin/content/time-sheet/dial
     UpdateScheduleDialogComponent,
     CreatEndingPointComponent,
     AddAttendanceDialogComponent,
-    DeleteConfirmComponent,
     DeleteCourseDialogComponent,
     DeleteDialogComponent,
     PickClassComponent,

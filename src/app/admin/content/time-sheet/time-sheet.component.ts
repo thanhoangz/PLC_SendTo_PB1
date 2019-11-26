@@ -8,6 +8,7 @@ import { NotificationService } from '../../services/extension/notification.servi
 import { ConfirmService } from '../../services/extension/confirm.service';
 import { TimeSheetService } from '../../services/time-sheet.service';
 import { ConfirmTimesheetDialogComponent } from './dialog/confirm-timesheet-dialog/confirm-timesheet-dialog.component';
+import { LogSystemService } from '../../services/logSystem.service';
 
 
 @Component({
@@ -58,7 +59,8 @@ export class TimeSheetComponent implements OnInit {
     public matDialog: MatDialog,
     private notificationService: NotificationService,
     private confirmService: ConfirmService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private logSystemService: LogSystemService
   ) {
     this.loginService.islogged();
     this.screenWidth = (window.screen.width);
@@ -153,9 +155,18 @@ export class TimeSheetComponent implements OnInit {
     this.timeSheetService.addTimeSheetCondition(this.monthSelected, this.yearSelected, ConstService.user.id).subscribe((result: any) => {
 
       this.notificationService.showNotification(1, 'Chấm Công', 'Đã tạo bảng chấm công');
-      console.log('success');
+      this.logSystemService.postLogSystem({
+        content: `${ConstService.user.userName} đã tạo bảng chấm công của tháng ${this.monthSelected}`,
+        userId: ConstService.user.id,
+        isTimeSheetLog: true,
+        isSalaryPayLog: false,
+        isStudyProcessLog: false,
+        isManagerPointLog: false
+      }).subscribe(dataResult => {
+
+      }, error => { });
+
       this.getTimeSheet();
-      console.log(result);
 
 
     }, error => {
@@ -163,6 +174,7 @@ export class TimeSheetComponent implements OnInit {
 
     });
   }
+
   public startProgressBar() {
     this.showProgressBar = true;
   }
@@ -172,7 +184,18 @@ export class TimeSheetComponent implements OnInit {
 
   onChange(timesheet) {
     this.timeSheetService.putTimeSheet(timesheet).subscribe(result => {
-      console.log('success');
+
+      this.logSystemService.postLogSystem({
+        content: `${ConstService.user.userName} đã cập nhật chấm công của tháng ${this.monthSelected} cho ${timesheet.personnelName}`,
+        userId: ConstService.user.id,
+        isTimeSheetLog: true,
+        isSalaryPayLog: false,
+        isStudyProcessLog: false,
+        isManagerPointLog: false
+      }).subscribe(dataResult => {
+
+      }, error => { });
+
       this.getTimeSheet();
     }, error => {
     });
@@ -214,7 +237,6 @@ export class TimeSheetComponent implements OnInit {
 
 
   public confirmTimeSheet() {
-    console.log(this.timeSheet);
     if (!this.isOpenDialog) {
       this.isOpenDialog = true;
       const widthMachine = (this.screenWidth < 500) ? 0.8 * this.screenWidth : 0.2 * this.screenWidth;
@@ -229,6 +251,17 @@ export class TimeSheetComponent implements OnInit {
 
           this.timeSheetService.comfirmTimesheets(this.timeSheet).subscribe(data => {
             this.notificationService.showNotification(1, '', 'Cập nhật thành công!');
+
+            this.logSystemService.postLogSystem({
+              content: `Admin đã chốt bảng công tháng ${this.monthSelected}`,
+              userId: ConstService.user.id,
+              isTimeSheetLog: true,
+              isSalaryPayLog: false,
+              isStudyProcessLog: false,
+              isManagerPointLog: false
+            }).subscribe(dataResult => {
+
+            }, error => { });
             this.getTimeSheet();
           }, error => { });
 
