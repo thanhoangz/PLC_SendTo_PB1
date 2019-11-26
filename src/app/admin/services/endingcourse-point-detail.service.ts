@@ -11,9 +11,9 @@ getAllEndingcoursePointDetail() {
   return this.httpClient
     .get(`${environment.PLCServicesDomain}/api/EndingCoursePointDetails`);
 }
-putEndingcoursePointDetail(endingPointDetail: any) {
+putEndingcoursePointDetail(endingPointDetail: any, userId) {
   return this.httpClient
-    .put(`${environment.PLCServicesDomain}/api/EndingCoursePointDetails/${endingPointDetail.id}`, endingPointDetail);
+    .put(`${environment.PLCServicesDomain}/api/EndingCoursePointDetails/${endingPointDetail.id}?userId=${userId}`, endingPointDetail);
 }
 
 // lấy theo điều kiện id của điểm định kì

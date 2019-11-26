@@ -41,7 +41,7 @@ export class EndingPointComponent implements OnInit {
 
   public screenHeight: any;
   public screenWidth: any;
-
+  public checkView = false;
   public length = 100;
   public pageSize = 20;
   public pageIndex = 1;
@@ -49,14 +49,15 @@ export class EndingPointComponent implements OnInit {
 
   public isOpenDialog = false;
 
-
-  public periodicPointDetail = [];
-  public periodicPoint;
-
   public endingPointDetail;
   public endingPoint;
   public endingPointId;
   public classMessageId;
+
+  public endingPointById = {
+    isLocked: false
+  };
+
 
   // public learnerId;
   public classList;
@@ -139,7 +140,11 @@ export class EndingPointComponent implements OnInit {
           this.endingPointId = result.id;
           this.lecturerName = result.lecturerName;
           this.dateOnPoint = result.dateOnPoint;
+          this.endingPointById.isLocked = result.isLocked;
+          this.endingPointById = result;
+          console.log(this.endingPointById.isLocked);
           console.log(result);
+          this.checkView = true;
           this.getEdingPointDetail();
 
         }
@@ -150,11 +155,13 @@ export class EndingPointComponent implements OnInit {
           this.endingPointId = null;
           this.lecturerName = null;
           this.dateOnPoint = null;
+          this.checkView = false;
           this.notificationService.showNotification(2, 'Điểm', 'Lớp học chưa có bảng điểm cuối khóa!');
 
 
         }
       }, error => {
+        this.checkView = false;
       });
     }
   }
@@ -274,7 +281,7 @@ export class EndingPointComponent implements OnInit {
   }
 
   public updatePeriodicPoint(endingPointDetail) {
-    this.endingcoursePointDetailService.putEndingcoursePointDetail(endingPointDetail).subscribe(result => {
+    this.endingcoursePointDetailService.putEndingcoursePointDetail(endingPointDetail, ConstService.user.id).subscribe(result => {
       this.getEndingPoint();
     }, error => {
     });
@@ -298,5 +305,12 @@ export class EndingPointComponent implements OnInit {
     this.permissionOfFunction.canUpdate = temp.canUpdate;
 
 
+  }
+
+  public changIsLocked(endingPointById) {
+    this.endingcoursePointService.putEndingcoursePoint(endingPointById).subscribe(result => {
+      console.log('đã cập nhật');
+    }, error => {
+    });
   }
 }

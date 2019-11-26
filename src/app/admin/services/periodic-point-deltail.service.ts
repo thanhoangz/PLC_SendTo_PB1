@@ -13,9 +13,10 @@ export class PeriodicPointDeltailService {
     return this.httpClient
       .get(`${environment.PLCServicesDomain}/api/PeriodicPointDetails`);
   }
-  putPeriodicPointDeltail(periodicPointDeltail: any, classId) {
+  putPeriodicPointDeltail(periodicPointDeltail: any, classId , userId) {
     return this.httpClient
-      .put(`${environment.PLCServicesDomain}/api/PeriodicPointDetails/${periodicPointDeltail.id}?classId=${classId}`, periodicPointDeltail);
+      // tslint:disable-next-line: max-line-length
+      .put(`${environment.PLCServicesDomain}/api/PeriodicPointDetails/${periodicPointDeltail.id}?classId=${classId}&userId=${userId}`, periodicPointDeltail);
   }
 
   // lấy theo điều kiện id của điểm định kì
