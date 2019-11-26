@@ -15,6 +15,12 @@ export class AttendanceSheetService {
   }
 
 
+  postAttendanceList(userId, lecturerId, tutorId, classId, month, year) {
+    return this.httpClient
+      // tslint:disable-next-line: max-line-length
+      .post(`${environment.PLCServicesDomain}/api/AttendanceSheets/add-attendance-list?userId=${userId}&lecturerId=${lecturerId}&tutorId=${tutorId}&classId=${classId}&month=${month}&year=${year}`, '');
+  }
+
   getByDateClass(classId, date) {
     return this.httpClient
       .get(`${environment.PLCServicesDomain}/api/AttendanceSheets/getByDate?classId=${classId}&date=${date}`);

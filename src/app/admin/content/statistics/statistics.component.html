@@ -164,6 +164,7 @@
 <!-- /.content -->
 <section class="content">
   <div class="container-fluid">
+    <!--Các lớp đã học-->
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -320,6 +321,60 @@
       </mat-expansion-panel>
     </mat-accordion>
 
+    <!--Quá trình học tập-->
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: blue; font-size: 20px;">
+            <b>Quá trình học tập</b>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <!--nội dung bên trong ở đây-->
+        <p></p>
+        <mat-card-content>
+          <div class="col-md-12" style="margin-top: 20px;"></div>
+          <table mat-table [dataSource]="qTHTdataSource" class="table-style-three"
+            style="border: 1px solid silver; border-radius: 10px; ">
+
+            <ng-container matColumnDef="index">
+              <th mat-header-cell *matHeaderCellDef style="width: 5%;" class="tencot"> STT</th>
+              <td mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef class="tencot"> Ngày thực hiện</th>
+              <td mat-cell *matCellDef="let element">{{element.date | date: 'dd-MM-yyyy'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="personnelName">
+              <th mat-header-cell *matHeaderCellDef class="tencot"> Người thực hiện</th>
+              <td mat-cell *matCellDef="let element">{{element.userName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="className">
+              <th mat-header-cell *matHeaderCellDef class="tencot"> Lớp học</th>
+              <td mat-cell *matCellDef="let element"> {{element.className}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="content">
+              <th mat-header-cell *matHeaderCellDef class="tencot"> Nội dung</th>
+              <td mat-cell *matCellDef="let element"> {{element.content}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="mumberSessions">
+                <th mat-header-cell *matHeaderCellDef class="tencot"> Số buổi đã học</th>
+                <td mat-cell *matCellDef="let element"> {{element.mumberSessions == 0}}</td>
+              </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="qTHTColumn"></tr>
+            <tr mat-row *matRowDef="let row; columns: qTHTColumn;">
+            </tr>
+          </table>
+        </mat-card-content>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!--Lịch sử đóng tiền-->
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>

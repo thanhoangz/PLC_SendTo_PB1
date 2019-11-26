@@ -1,4 +1,5 @@
 
+
 import { AddGuestDialogComponent } from './content/guest-type/dialog/add-guest-dialog/add-guest-dialog.component';
 import { CKEditorModule } from 'ngx-ckeditor';
 import { EditLanguageClassComponent } from './content/language-classes/dialog/edit-language-class/edit-language-class.component';
@@ -47,7 +48,6 @@ import { DeleteCourseDialogComponent } from './content/course/dialog/delete-cour
 import { DetailCourseDialogComponent } from './content/course/dialog/detail-course-dialog/detail-course-dialog.component';
 import { BidiModule } from '@angular/cdk/bidi';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { ConfirmDialogComponent } from './extension-dialog/confirm-dialog/confirm-dialog.component';
 import { PaySlipTypesComponent } from './content/pay-slip-types/pay-slip-types.component';
 import { ClassRoomComponent } from './content/class-room/class-room.component';
 import { ReceiptTypesComponent } from './content/receipt-types/receipt-types.component';
@@ -119,7 +119,6 @@ import { DeleteDialogComponent } from './content/delete-dialog/delete-dialog.com
 import { PickClassComponent } from './content/schedule-school/schedule-in-table/dialog/pick-class/pick-class.component';
 import { DetailReceiptBoComponent } from './content/receipt/page/detail-receipt-bo/detail-receipt-bo.component';
 import { DeleteReceiptComponent } from './content/receipt/dialog/delete-receipt/delete-receipt.component';
-import { TestReportComponent } from './content/test-report/test-report.component';
 // tslint:disable-next-line: max-line-length
 import { CreateClassSecDialogComponent } from './content/schedule-school/schedule-for-learner/dialog/create-class-sec-dialog/create-class-sec-dialog.component';
 import { ReportPeriodicPointComponent } from './content/report-periodic-point/report-periodic-point.component';
@@ -127,7 +126,6 @@ import { ReportEndingPointComponent } from './content/report-ending-point/report
 import { ReportTuitionLearningComponent } from './content/report-tuition-learning/report-tuition-learning.component';
 import { ReportNotPaidTuitionComponent } from './content/report-not-paid-tuition/report-not-paid-tuition.component';
 import { ConfirmTranferComponent } from './content/schedule-school/schedule-for-learner/dialog/confirm-tranfer/confirm-tranfer.component';
-import { TestReportNgcssComponent } from './content/test-report-ngcss/test-report-ngcss.component';
 import { NgxPrintModule } from 'ngx-print';
 import { ReportListlearnerClassComponent } from './content/report-listlearner-class/report-listlearner-class.component';
 import { ReportRollpayPersonnelComponent } from './content/report-rollpay-personnel/report-rollpay-personnel.component';
@@ -141,6 +139,11 @@ import { ReportAttendanceSheetComponent } from './content/report-attendance-shee
 import { AddOutAttendanceComponent } from './content/attendance-sheet/dialog/add-attendance-dialog/add-out-attendance/add-out-attendance.component';
 import { ReportPayslipsComponent } from './content/report-payslips/report-payslips.component';
 import { LogSystemComponent } from './content/log-system/log-system.component';
+import { AttendanceSheetVer2Component } from './content/attendance-sheet-ver2/attendance-sheet-ver2.component';
+// tslint:disable-next-line: max-line-length
+import { AddListAttendanceByMonthComponent } from './content/attendance-sheet/dialog/add-attendance-dialog/add-list-attendance-by-month/add-list-attendance-by-month.component';
+import { ConfirmTimesheetDialogComponent } from './content/time-sheet/dialog/confirm-timesheet-dialog/confirm-timesheet-dialog.component';
+
 
 @NgModule({
   imports: [
@@ -198,7 +201,6 @@ import { LogSystemComponent } from './content/log-system/log-system.component';
     DeleteCourseDialogComponent,
     DetailCourseDialogComponent,
     AddCourseDialogComponent,
-    ConfirmDialogComponent,
     PaySlipTypesComponent,
     ClassRoomComponent,
     ReceiptTypesComponent,
@@ -266,14 +268,12 @@ import { LogSystemComponent } from './content/log-system/log-system.component';
     PickClassComponent,
     DetailReceiptBoComponent,
     DeleteReceiptComponent,
-    TestReportComponent,
     CreateClassSecDialogComponent,
     ReportPeriodicPointComponent,
     ReportEndingPointComponent,
     ReportTuitionLearningComponent,
     ReportNotPaidTuitionComponent,
     ConfirmTranferComponent,
-    TestReportNgcssComponent,
     ReportListlearnerClassComponent,
     ReportRollpayPersonnelComponent,
     ReportRollpayLecturersComponent,
@@ -283,7 +283,11 @@ import { LogSystemComponent } from './content/log-system/log-system.component';
     ReportAttendanceSheetComponent,
     AddOutAttendanceComponent,
     ReportPayslipsComponent,
-    LogSystemComponent
+    LogSystemComponent,
+    AttendanceSheetVer2Component,
+    AddListAttendanceByMonthComponent,
+    ConfirmTimesheetDialogComponent
+
   ],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false, direction: 'ltr' } },

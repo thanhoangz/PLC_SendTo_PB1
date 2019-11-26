@@ -16,6 +16,7 @@ import { ReceiptDetailService } from 'src/app/admin/services/Receipt-Detail.serv
 import { LanguageClassesService } from 'src/app/admin/services/language-classes.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { ConstService } from '../../services/extension/Const.service';
+import { LogSystemService } from '../../services/logSystem.service';
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
@@ -60,7 +61,7 @@ export class StatisticsComponent implements OnInit {
     note: '',
     guestTypeName: '',
   };
-
+  public logStudyprocess;
   public keyWord: '';
 
   // tslint:disable-next-line: member-ordering
@@ -89,7 +90,8 @@ export class StatisticsComponent implements OnInit {
   // tslint:disable-next-line: max-line-length
   public displayedColumnsDiemDinhKi: string[] = ['index', 'week', 'point', 'averagePoint', 'sortedByPoint', 'sortedByAveragePoint'];
 
-
+  public qTHTColumn: string[] = ['index', 'date', 'personnelName', 'className', 'content', 'mumberSessions'];
+  public qTHTdataSource = new MatTableDataSource(this.logStudyprocess);
 
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -105,6 +107,7 @@ export class StatisticsComponent implements OnInit {
     private receiptsService: ReceiptsService,
     public receiptDetailService: ReceiptDetailService,
     public languageClassesService: LanguageClassesService,
+    public logSystemService: LogSystemService
   ) {
     this.screenWidth = (window.screen.width);
     this.screenHeight = (window.screen.height);
@@ -201,12 +204,24 @@ export class StatisticsComponent implements OnInit {
       this.getClassStudied(result.id);
       // gọi thông tin điểm theo lớp đã học
       this.getDiemTheoLopDaHoc(result.id);
+      // gọi thông tin logQTHT theo id
+      this.getLogQTHT(result.id);
     }, error => {
       this.notificationService.showNotification(3, 'Tra cứu', 'Không tìm thấy mã sinh viên!');
     });
   }
 
-
+  // chi tiết log QTHT
+  public getLogQTHT(id) {
+    this.logSystemService.logStudyProcessbyLearnerId(id).subscribe((result: any) => {
+      this.logStudyProcess = result;
+      this.loadtableLogQTHT(result);
+    }, error => {
+    });
+  }
+  public loadtableLogQTHT(data3: any) {
+    this.qTHTdataSource = new MatTableDataSource(data3);
+  }
 
   // quá trình đóng họ
   public getReceiptsByLearnerId(id) {
