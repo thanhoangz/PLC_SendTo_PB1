@@ -11,7 +11,7 @@
                 <div class="col-md-2">
                     <mat-form-field>
                         <mat-label>Chọn tài khoản</mat-label>
-                        <mat-select [(ngModel)]="userSelected" required>
+                        <mat-select [(ngModel)]="userSelected" >
                             <mat-option *ngFor="let item of users" value="{{item.id}}">
                                 {{item.fullName}}
                             </mat-option>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-md-2">
                     <mat-form-field>
-                        <input matInput [matDatepicker]="picker" [(ngModel)]="toDate" placeholder="Từ ngày" required
+                        <input matInput [matDatepicker]="picker" [(ngModel)]="toDate" placeholder="Từ ngày" 
                             readonly>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-md-2">
                     <mat-form-field>
-                        <input matInput [matDatepicker]="picker1" [(ngModel)]="fromDate" placeholder="Đến ngày" required
+                        <input matInput [matDatepicker]="picker1" [(ngModel)]="fromDate" placeholder="Đến ngày" 
                             readonly>
                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                         <mat-datepicker #picker1></mat-datepicker>
