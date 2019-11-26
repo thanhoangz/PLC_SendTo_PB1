@@ -137,6 +137,7 @@ import { ReportAttendanceSheetComponent } from './content/report-attendance-shee
 // tslint:disable-next-line: max-line-length
 import { AddOutAttendanceComponent } from './content/attendance-sheet/dialog/add-attendance-dialog/add-out-attendance/add-out-attendance.component';
 import { ReportPayslipsComponent } from './content/report-payslips/report-payslips.component';
+import { LogSystemComponent } from './content/log-system/log-system.component';
 import { AttendanceSheetVer2Component } from './content/attendance-sheet-ver2/attendance-sheet-ver2.component';
 // tslint:disable-next-line: max-line-length
 import { AddListAttendanceByMonthComponent } from './content/attendance-sheet/dialog/add-attendance-dialog/add-list-attendance-by-month/add-list-attendance-by-month.component';
@@ -280,6 +281,7 @@ import { ConfirmTimesheetDialogComponent } from './content/time-sheet/dialog/con
     ReportAttendanceSheetComponent,
     AddOutAttendanceComponent,
     ReportPayslipsComponent,
+    LogSystemComponent,
     AttendanceSheetVer2Component,
     AddListAttendanceByMonthComponent,
     ConfirmTimesheetDialogComponent
