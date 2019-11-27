@@ -34,6 +34,9 @@ export class AttendanceSheetVer2Component implements OnInit {
     canRead: false
   };
 
+  public fullLearnerForMonth;
+
+  public countLesson = 0;
   public months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   @ViewChild('learners', { static: true, read: MatSelectionList }) learners: MatSelectionList;
   public floatLabel = 'always';
@@ -85,6 +88,7 @@ export class AttendanceSheetVer2Component implements OnInit {
     this.getAllClasses();
     this.month = new Date().getMonth();
     this.year = new Date().getFullYear();
+
   }
 
   public createAttendanceDialog() {
@@ -110,13 +114,13 @@ export class AttendanceSheetVer2Component implements OnInit {
 
   public changeYear(year) {
     this.year = year;
+    this.getTableAttendanceForMonth(this.month, year, this.currentClassId);
   }
 
 
   public changeClass(classId) {
-    this.checkedLearners = [];
-    this.notCheckedLearners = [];
-    const dateSelected = this.datepipe.transform(this.currentDate, 'yyyy-MM-dd');
+    this.currentClassId = classId;
+    this.getTableAttendanceForMonth(this.month, this.year, classId);
   }
 
   public getAllLearnerInClass(classId) {
@@ -133,7 +137,7 @@ export class AttendanceSheetVer2Component implements OnInit {
     this.languageClassesService.getAllLanguageClasses().subscribe(result => {
       this.classes = result;
       this.currentClassId = result[0].id;
-      const dateSelected = this.datepipe.transform(this.currentDate, 'yyyy-MM-dd');
+      this.getTableAttendanceForMonth(this.month, this.year, this.currentClassId);
     }, error => {
 
     });
@@ -156,6 +160,16 @@ export class AttendanceSheetVer2Component implements OnInit {
   }
 
 
+  public getTableAttendanceForMonth(month, year, classId) {
+    console.log(classId);
+    this.attendanceSheetService.getAttendanceSheetForMonth(month + 1, year, classId).subscribe((result: any) => {
+      this.fullLearnerForMonth = result;
+      this.countLesson = result[0].days;
+      console.log(result);
+    }, error => {
+
+    });
+  }
 
   public getYear(date: Date) {
     return date.getFullYear();
@@ -240,10 +254,22 @@ export class AttendanceSheetVer2Component implements OnInit {
 
   changeMonth(month) {
     this.month = month;
+    this.getTableAttendanceForMonth(month, this.year, this.currentClassId);
   }
 
   setNameOfMonth(numberMonth) {
     return 'Tháng ' + numberMonth;
   }
+
+  onChange(detail, e) {
+    console.log(detail);
+
+    this.attendanceSheetDetailService.putAttendanceDetails(detail).subscribe(result => {
+      this.notificationService.showNotification(1, '', 'Cập nhập thành công!');
+    }, error => {
+
+    });
+  }
+
 
 }

@@ -37,7 +37,6 @@ import { PrivateInfoComponent } from './content/private-info/private-info.compon
 import { RollPayComponent } from './content/roll-pay/roll-pay.component';
 import { DetailReceiptComponent } from './content/search-studyprocess/dialog/detail-receipt/detail-receipt.component';
 import { DetailReceiptBoComponent } from './content/receipt/page/detail-receipt-bo/detail-receipt-bo.component';
-import { TestReportComponent } from './content/test-report/test-report.component';
 import { ReportPeriodicPointComponent } from './content/report-periodic-point/report-periodic-point.component';
 import { ReportEndingPointComponent } from './content/report-ending-point/report-ending-point.component';
 import { ReportTuitionLearningComponent } from './content/report-tuition-learning/report-tuition-learning.component';
@@ -49,6 +48,7 @@ import { ReportTimesheetLectureComponent } from './content/report-timesheet-lect
 import { ReportTimesheetPersonnelsComponent } from './content/report-timesheet-personnels/report-timesheet-personnels.component';
 import { ReportAttendanceSheetComponent } from './content/report-attendance-sheet/report-attendance-sheet.component';
 import { ReportPayslipsComponent } from './content/report-payslips/report-payslips.component';
+import { LogSystemComponent } from './content/log-system/log-system.component';
 import { AttendanceSheetVer2Component } from './content/attendance-sheet-ver2/attendance-sheet-ver2.component';
 
 const adminRoutes: Routes = [
@@ -94,7 +94,6 @@ const adminRoutes: Routes = [
           { path: 'home', component: HomeComponent },
           { path: 'private-info', component: PrivateInfoComponent },
           { path: 'dashboard', component: DashboardComponent },
-          { path: 'report', component: TestReportComponent },
           { path: 'report-periodic', component: ReportPeriodicPointComponent },
           { path: 'report-ending', component: ReportEndingPointComponent },
           { path: 'report-tuition', component: ReportTuitionLearningComponent },
@@ -107,6 +106,8 @@ const adminRoutes: Routes = [
           { path: 'report-timesheet-personnels', component: ReportTimesheetPersonnelsComponent },
           { path: 'report-attendance-sheet', component: ReportAttendanceSheetComponent },
           { path: 'report-payslips', component: ReportPayslipsComponent },
+          { path: 'log', component: LogSystemComponent },
+
           { path: 'attendance-sheet-v2', component: AttendanceSheetVer2Component },
         ]
       }

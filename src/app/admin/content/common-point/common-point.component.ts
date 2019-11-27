@@ -42,7 +42,7 @@ export class CommonPointComponent implements OnInit {
 
   public screenHeight: any;
   public screenWidth: any;
-
+  public checkView = false;
   public length = 100;
   public pageSize = 20;
   public pageIndex = 1;
@@ -57,7 +57,10 @@ export class CommonPointComponent implements OnInit {
   public periodicPointDetail = [];
   public periodicPoint;
 
-  public isLocked;
+  public periodicPointById = {
+    id: null,
+    isLocked: null
+  };
 
 
 
@@ -162,16 +165,16 @@ export class CommonPointComponent implements OnInit {
   /// để lấy tên tuần gán ngoài html
   public getPeriodicId() {
     this.periodicPointService.getByPeriodicPointId(this.weekSelected).subscribe((result: any) => {
-      this.isLocked = result.isLocked;
+      this.checkView = true;
+      this.periodicPointById.id = result.id;
+      this.periodicPointById.isLocked = result.isLocked;
       this.weekName = result.week;
       this.lecturerName = result.lecturerName;
       this.dateOnPoint = result.dateOnPoint;
-      console.log(this.weekName);
-      console.log(this.lecturerName);
-      console.log(this.dateOnPoint);
-      console.log(this.isLocked);
+      this.periodicPointById = result;
 
     }, error => {
+      this.checkView = false;
     });
   }
   public getAllClass() {
@@ -190,6 +193,7 @@ export class CommonPointComponent implements OnInit {
     this.lecturerName = null;
     this.dateOnPoint = null;
     console.log(this.weekSelected);
+    this.checkView = false;
   }
 
   public getPeriodicDetail() {
@@ -295,7 +299,8 @@ export class CommonPointComponent implements OnInit {
 
   }
   public updatePeriodicPoint(periodicDetail) {
-    this.periodicPointDeltailService.putPeriodicPointDeltail(periodicDetail, this.classMessageId).subscribe(result => {
+    // tslint:disable-next-line: max-line-length
+    this.periodicPointDeltailService.putPeriodicPointDeltail(periodicDetail, this.classMessageId, ConstService.user.id).subscribe(result => {
       console.log('success');
       this.getPeriodicDetail();
     }, error => {
@@ -322,5 +327,11 @@ export class CommonPointComponent implements OnInit {
 
   }
 
+  public changIsLocked(periodicPointById) {
+    this.periodicPointService.putPeriodicPoint(periodicPointById).subscribe(result => {
+      console.log('oke update cmnr');
+    }, error => {
+    });
+  }
 
 }

@@ -28,4 +28,9 @@ export class AttendanceSheetDetailService {
     return this.httpClient
       .get(`${environment.PLCServicesDomain}/api/AttendanceSheetDetails/get-details-by-date-attendance?attendanceId=${attendaceId}`);
   }
+
+  putAttendanceDetails(attendanceDetail: any) {
+    return this.httpClient
+      .put(`${environment.PLCServicesDomain}/api/AttendanceSheetDetails/${attendanceDetail.id}`, attendanceDetail);
+  }
 }
