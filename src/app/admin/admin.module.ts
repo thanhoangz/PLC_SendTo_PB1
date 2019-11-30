@@ -142,6 +142,10 @@ import { AttendanceSheetVer2Component } from './content/attendance-sheet-ver2/at
 // tslint:disable-next-line: max-line-length
 import { AddListAttendanceByMonthComponent } from './content/attendance-sheet/dialog/add-attendance-dialog/add-list-attendance-by-month/add-list-attendance-by-month.component';
 import { ConfirmTimesheetDialogComponent } from './content/time-sheet/dialog/confirm-timesheet-dialog/confirm-timesheet-dialog.component';
+import { ATestQthtComponent } from './content/a-test-qtht/a-test-qtht.component';
+import { ATestDiemComponent } from './content/a-test-diem/a-test-diem.component';
+import { ATestLsdtComponent } from './content/a-test-lsdt/a-test-lsdt.component';
+import { HentuvanComponent } from './content/hentuvan/hentuvan.component';
 
 
 @NgModule({
@@ -284,7 +288,11 @@ import { ConfirmTimesheetDialogComponent } from './content/time-sheet/dialog/con
     LogSystemComponent,
     AttendanceSheetVer2Component,
     AddListAttendanceByMonthComponent,
-    ConfirmTimesheetDialogComponent
+    ConfirmTimesheetDialogComponent,
+    ATestQthtComponent,
+    ATestDiemComponent,
+    ATestLsdtComponent,
+    HentuvanComponent
 
   ],
   providers: [

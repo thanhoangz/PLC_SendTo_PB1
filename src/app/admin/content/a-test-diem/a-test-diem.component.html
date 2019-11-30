@@ -1,0 +1,96 @@
+<section class="content" style="margin-top: 1%">
+    <div class="container-fluid">
+        <mat-card>
+            <mat-card-header class="card-container">
+                <mat-card-title>Quá trình học tập</mat-card-title>
+            </mat-card-header>
+        </mat-card>
+        <mat-card style="margin-top: 0.5%; ">
+            <div class="row">
+                <!--Bảng điểm các lớp đã học-->
+                <mat-card class=" row card bg-light" *ngFor="let item of Diem">
+                    <div style="font-size: 18px;"><b> Lớp : {{item.class.name}} </b></div> <br>
+                    <div class="col-md-10" style="margin-left:10%;">
+                        <div style="font-size: 15px;"><b>Điểm định kì </b></div> <br>
+                        <table mat-table [dataSource]="item.periodicPoints" class="table-style-three"
+                            style="border: 1px solid silver; border-radius: 10px; ">
+
+                            <ng-container matColumnDef="index">
+                                <th mat-header-cell *matHeaderCellDef style="width: 5%;" class="tencot"> STT</th>
+                                <td mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="week">
+                                <th mat-header-cell *matHeaderCellDef class="tencot"> Tuần</th>
+                                <td mat-cell *matCellDef="let element"> {{element.week}}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="point">
+                                <th mat-header-cell *matHeaderCellDef class="tencot"> Điểm</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.detailPointOfLearner.point}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="averagePoint">
+                                <th mat-header-cell *matHeaderCellDef class="tencot"> Điểm trung bình</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.detailPointOfLearner.averagePoint}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="sortedByPoint">
+                                <th mat-header-cell *matHeaderCellDef class="tencot"> Xếp hạng</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.detailPointOfLearner.sortedByPoint}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="sortedByAveragePoint">
+                                <th mat-header-cell *matHeaderCellDef class="tencot"> Xếp hạng TB</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.detailPointOfLearner.sortedByAveragePoint}} </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsDiemDinhKi"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsDiemDinhKi;">
+                            </tr>
+                        </table>
+                        <div style="font-size: 15px; margin-top: 30px;"><b>Điểm cuối khóa</b></div> <br>
+                        <div class="row col-md-12">
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-4 lable1">Điểm Nghe</div>
+                                    <div class="col-md-6">{{item.endingCoursePoint.listeningPoint}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 lable1">Điểm Nói</div>
+                                    <div class="col-md-6">{{item.endingCoursePoint.sayingPoint}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 lable1">Điểm Đọc</div>
+                                    <div class="col-md-6">{{item.endingCoursePoint.readingPoint}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 lable1">Điểm Viết</div>
+                                    <div class="col-md-6">{{item.endingCoursePoint.writingPoint}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-5 lable1">Tổng điểm</div>
+                                    <div class="col-md-6">{{item.endingCoursePoint.totalPoint}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 lable1">Điểm trung bình</div>
+                                    <div class="col-md-6">{{item.endingCoursePoint.averagePoint}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 lable1">Xếp hạng</div>
+                                    <div class="col-md-6">{{item.endingCoursePoint.sortOrder}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </mat-card>
+    </div>
+</section>

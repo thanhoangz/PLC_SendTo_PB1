@@ -50,7 +50,10 @@ import { ReportAttendanceSheetComponent } from './content/report-attendance-shee
 import { ReportPayslipsComponent } from './content/report-payslips/report-payslips.component';
 import { LogSystemComponent } from './content/log-system/log-system.component';
 import { AttendanceSheetVer2Component } from './content/attendance-sheet-ver2/attendance-sheet-ver2.component';
-
+import { ATestQthtComponent } from './content/a-test-qtht/a-test-qtht.component';
+import { ATestDiemComponent } from './content/a-test-diem/a-test-diem.component';
+import { ATestLsdtComponent } from './content/a-test-lsdt/a-test-lsdt.component';
+import { HentuvanComponent } from './content/hentuvan/hentuvan.component';
 const adminRoutes: Routes = [
   {
     path: 'admin',
@@ -109,6 +112,10 @@ const adminRoutes: Routes = [
           { path: 'log', component: LogSystemComponent },
 
           { path: 'attendance-sheet-v2', component: AttendanceSheetVer2Component },
+          { path: 'test-qtht', component: ATestQthtComponent },
+          { path: 'test-diem', component: ATestDiemComponent },
+          { path: 'test-lsdt', component: ATestLsdtComponent },
+          { path: 'hentuvan', component: HentuvanComponent },
         ]
       }
     ]
